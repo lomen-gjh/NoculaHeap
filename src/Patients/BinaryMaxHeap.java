@@ -80,13 +80,6 @@ public class BinaryMaxHeap {
     }
 
     public static void main(String[] args){
-        BinaryMaxHeap priority_queue=new BinaryMaxHeap();
-        priority_queue.insert(new Patient(50,22,"Ferko Mudry","Novohradska 3"));
-        priority_queue.insert(new Patient(55,19,"Anna Sikovna","Hlavna 32"));
-        priority_queue.insert(new Patient(22,23,"Ferko Mudry","Devinska 9"));
-        priority_queue.insert(new Patient(80,99,"Ferko Nadherny","Gagarinova 13"));
-        priority_queue.insert(new Patient(25,99,"Ferko Uzasny","Gagarinova 13"));
-        priority_queue.insert(new Patient(68,99,"Ferko Priemerny","Gagarinova 13"));
-        priority_queue.print();
+       
     }
 }
