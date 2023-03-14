@@ -45,11 +45,15 @@ public class BinaryMaxHeap {
 
     void HeapifyUp(int index){
         try {
-            while(index!=0 || data[index].priority>data[getParent(index)].priority){
+
+            while(index!=0 && data[index].priority>data[getParent(index)].priority){
                 swap(index, getParent(index));
+                index=getParent(index);
+
             }
         }
         catch (IndexOutOfBoundsException err){
+            System.out.println(index);
             System.out.println("Si mimo");
         }
     }
@@ -58,6 +62,15 @@ public class BinaryMaxHeap {
         data[count++]=p;
         checkCapacity();
         HeapifyUp(count-1);
+    }
+
+    void HeapifyDown(int index){
+
+    }
+    void poll(){
+        //1. Swapni prvy a posledny
+        //2. Vymaz posledny
+        //3. Zavolaj HeapifyDown na vrchu
     }
 
     void print(){
@@ -71,7 +84,9 @@ public class BinaryMaxHeap {
         priority_queue.insert(new Patient(50,22,"Ferko Mudry","Novohradska 3"));
         priority_queue.insert(new Patient(55,19,"Anna Sikovna","Hlavna 32"));
         priority_queue.insert(new Patient(22,23,"Ferko Mudry","Devinska 9"));
-        priority_queue.insert(new Patient(80,99,"Ferko Mudry","Gagarinova 13"));
+        priority_queue.insert(new Patient(80,99,"Ferko Nadherny","Gagarinova 13"));
+        priority_queue.insert(new Patient(25,99,"Ferko Uzasny","Gagarinova 13"));
+        priority_queue.insert(new Patient(68,99,"Ferko Priemerny","Gagarinova 13"));
         priority_queue.print();
     }
 }
