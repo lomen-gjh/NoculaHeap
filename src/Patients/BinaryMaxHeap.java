@@ -65,12 +65,26 @@ public class BinaryMaxHeap {
     }
 
     void HeapifyDown(int index){
-
+        while(getLeftChild(index)!=-1 && data[getLeftChild(index)].priority>data[index].priority){
+            if (getRightChild(index)!=-1 && data[getRightChild(index)].priority>data[getLeftChild(index)].priority){
+                swap(index, getRightChild(index));
+                index=getRightChild(index);
+            }
+            else{
+                swap(index, getLeftChild(index));
+                index=getLeftChild(index);
+            }
+        }
     }
     void poll(){
-        //1. Swapni prvy a posledny
-        //2. Vymaz posledny
-        //3. Zavolaj HeapifyDown na vrchu
+        if (count==0)
+        {
+            System.out.println("Som prazdna haldicka");
+            return;
+        }
+        swap(0, count-1);
+        data[--count]=null;
+        HeapifyDown(0);
     }
 
     void print(){
@@ -80,6 +94,20 @@ public class BinaryMaxHeap {
     }
 
     public static void main(String[] args){
-       
+        BinaryMaxHeap priority_queue=new BinaryMaxHeap();
+        priority_queue.insert(new Patient(50,22,"Ferko Mudry","Novohradska 3"));
+        priority_queue.insert(new Patient(55,19,"Anna Sikovna","Hlavna 32"));
+        priority_queue.insert(new Patient(22,23,"Ferko Mudry","Devinska 9"));
+        priority_queue.insert(new Patient(80,99,"Ferko Nadherny","Gagarinova 13"));
+        priority_queue.insert(new Patient(25,99,"Ferko Uzasny","Gagarinova 13"));
+        priority_queue.insert(new Patient(68,99,"Ferko Priemerny","Gagarinova 13"));
+        priority_queue.print();
+        System.out.println("---------------");
+        for (int i=0; i<10; i++){
+            priority_queue.poll();
+            priority_queue.print();
+            System.out.println("---------------------");
+        }
+
     }
 }
